@@ -1,17 +1,15 @@
 <template>
     <div>
-        {{ data }}
+       
     </div>
 </template>
 
 <script setup lang="ts">
-import { useApi } from '~/composable/useApi';
+import {useCharacterStore} from '@/store/character'
 
-const api = useApi()
-const { data } = await api({
-    method: 'get',
-    url: '/character'
-})
+const characterStore = useCharacterStore();
+
+characterStore.getCharacters()
 </script>
 
 <style scoped></style>
