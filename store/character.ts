@@ -10,7 +10,6 @@ export const useCharacterStore = defineStore("characters", () => {
         try {
             const response = await api.get("/character");
             characters.value = response.data.results;
-            console.log(characters.value)
           } catch (error) {
             characters.value = [];
             console.log(error);

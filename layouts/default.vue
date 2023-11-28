@@ -1,6 +1,6 @@
 <template>
     <div>
-        <header class="shadow-sm bg-white">
+        <header class="shadow-xl bg-white">
             <nav class="container mx-auto p-4 flex justify-between">
                 <NuxtLink to="/" class="font-bold">Rick and Morty</NuxtLink>
                 <ul class="flex gap-4">
@@ -9,7 +9,7 @@
                         <NuxtLink to="https://github.com/springfil/nuxt-test" 
                         target="_blank"
                         class="btn">
-                        Github
+                            Github
                         </NuxtLink>
                     </li>
                 </ul>

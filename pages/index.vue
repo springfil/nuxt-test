@@ -1,6 +1,8 @@
 <template>
-    <div>
-       
+   <div>
+        <div>
+            <CharacterList :items="characters"/>
+        </div>
     </div>
 </template>
 
@@ -8,6 +10,7 @@
 import {useCharacterStore} from '@/store/character'
 
 const characterStore = useCharacterStore();
+const { characters, currentCharacter } = storeToRefs(characterStore)
 
 characterStore.getCharacters()
 </script>
