@@ -1,14 +1,17 @@
 <template>
     <div>
-        <h1 class="font-bold">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat,
-            quas consectetur. Eos blanditiis voluptatibus, maxime aut itaque
-            consectetur voluptatum corporis reiciendis nihil inventore debitis
-            iure facere fugit. Porro, blanditiis optio!
-        </h1>
+        {{ data }}
     </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useApi } from '~/composable/useApi';
+
+const api = useApi()
+const { data } = await api({
+    method: 'get',
+    url: '/character'
+})
+</script>
 
 <style scoped></style>
