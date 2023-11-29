@@ -12,9 +12,9 @@
     </div>
     <div class="grid gap-4 grid-cols-2 my-5 ">
       <div v-for="(character, idx) in currentEpisodeCharacter" :key="idx">
-        <div class="flex items-center shadow-2xl bg-white">
+        <div class="flex items-center shadow-2xl bg-white ">
           <NuxtLink :to="`/character/${getIdFromUrl(character.url)}`">
-            <img :src="character.image" :alt="character.name" class="w-24 mx-1 rounded-full" />
+            <img :src="character.image" :alt="character.name" class="w-24 " />
           </NuxtLink>
           <p class="mx-auto">{{ character.name }}</p>
         </div>  
