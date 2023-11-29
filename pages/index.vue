@@ -23,7 +23,7 @@
 import {useCharacterStore} from '@/store/character'
 
 const characterStore = useCharacterStore();
-const { characters, currentCharacter } = storeToRefs(characterStore)
+const { characters } = storeToRefs(characterStore)
 characterStore.getCharacters()
 
 const characterName = ref('');

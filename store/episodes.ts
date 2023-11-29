@@ -46,4 +46,4 @@ export const useEpisodesStore = defineStore("episodes", () => {
         getEpisodeCharacterId,
         getCharacterData,
     };
-});
+}, {persist: true});

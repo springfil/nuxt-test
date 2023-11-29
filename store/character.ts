@@ -50,5 +50,5 @@ export const useCharacterStore = defineStore("characters", () => {
         filterCharacters,
         getCurrentCharacter,
       };
-});
+}, {persist: true});
 

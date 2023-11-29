@@ -31,7 +31,7 @@ const { currentEpisode, currentEpisodeCharacter } = storeToRefs(episodesStore);
 
 episodesStore.getCurrentEpisode(route.params.id);
 
-const getIdFromUrl = (url) => {
+const getIdFromUrl = (url: string) => {
         const urlParts = url.split("/");
         return urlParts[urlParts.length - 1];
 }
