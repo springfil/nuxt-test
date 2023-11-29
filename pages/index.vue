@@ -23,12 +23,13 @@
 import {useCharacterStore} from '@/store/character'
 
 const characterStore = useCharacterStore();
+characterStore.$hydrate()
 const { characters } = storeToRefs(characterStore)
 characterStore.getCharacters()
 
 const characterName = ref('');
-const characterStatus = ref('alive')
- 
+const characterStatus = ref('alive');
+
 const characterStatuses = ref([
     { value: 'alive' },
     { value: 'dead' },
@@ -43,6 +44,24 @@ watch([characterName, characterStatus], ([characterName, characterStatus]) => {
     });
 });
 
+watch([characterName, characterStatus], ([characterName, characterStatus]) => {
+    localStorage.setItem('characterName', characterName);
+    localStorage.setItem('characterStatus', characterStatus);
+    characterStore.filterCharacters({
+        name: characterName,
+        status: characterStatus
+    });
+});
+
+onMounted(() => {
+    if (localStorage.getItem('characterName')) {
+        characterName.value = localStorage.getItem('characterName');
+    }
+    if (localStorage.getItem('characterStatus')) {
+        characterStatus.value = localStorage.getItem('characterStatus');
+    }
+});
+ 
 </script>
 
 <style scoped></style>
