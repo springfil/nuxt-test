@@ -11,7 +11,7 @@
             <div>
                 <ul>
                     <li class="mt-1">
-                        <span class="font-bold">Имя:</span> <NuxtLink class="  hover:text-emerald-500" :to="`/character/${item.id}`">{{ item.name }}</NuxtLink>
+                        <span class="font-bold">Name:</span> <NuxtLink class="  hover:text-emerald-500" :to="`/character/${item.id}`">{{ item.name }}</NuxtLink>
                     </li>
                     <li class="mt-1">
                         <span class="font-bold">Gender:</span> {{ item.gender }}
