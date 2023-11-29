@@ -11,5 +11,8 @@ export default defineNuxtConfig({
       sameSite: 'strict',
     },
     storage: 'localStorage'
-  }
+  },
+  css:[
+    '@/assets/css/global.css'
+  ]
 })
