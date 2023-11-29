@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="mb-4 flex gap-10">
+        <div class="mb-4 flex justify-between gap-10">
             <input
                 class="w-2/5 text-lg bg-slate-50 px-5 py-2 rounded-xl shadow-lg outline-none"
                 type="text"
