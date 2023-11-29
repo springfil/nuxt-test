@@ -1,23 +1,22 @@
-
-.page-left-enter-active,
-.page-right-enter-active,
-.page-left-leave-active,
-.page-right-leave-active {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  transition: all 400ms ease-in-out;
+.slide-left-enter-active,
+.slide-left-leave-active,
+.slide-right-enter-active,
+.slide-right-leave-active {
+  transition: all 0.2s ease-in-out;
 }
-
-.page-left-enter-from, .page-right-leave-to {
-  transform: translateX(100%);
+.slide-left-enter-from {
+  opacity: 0;
+  transform: translate(50px, 0);
 }
-
-.page-left-leave-to, .page-right-enter-from {
-  transform: translateX(-100%);
+.slide-left-leave-to {
+  opacity: 0;
+  transform: translate(-50px, 0);
 }
-
-.page-left-enter-to, .page-right-enter-to {
-  transform: translateX(0);
+.slide-right-enter-from {
+  opacity: 0;
+  transform: translate(-50px, 0);
+}
+.slide-right-leave-to {
+  opacity: 0;
+  transform: translate(50px, 0);
 }
