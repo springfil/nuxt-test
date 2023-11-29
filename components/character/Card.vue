@@ -22,12 +22,12 @@
                 </ul>
             </div>
             <div class="mt-8 flex flex-wrap">
-              <AppBadge 
+              <div 
               class="transition duration-300 ease-in-out hover:scale-110 px-3 btn mx-2" 
               v-for="(episode, idx) in firstFiveEpisodes" :key="idx" 
               bgColor="bg-amber-500" textColor="text-slate-50">
-                <NuxtLink :to="`/episode/${idx}`">Ep. {{ idx }}</NuxtLink>
-              </AppBadge>
+                <NuxtLink :to="`/episode/${getIdFromUrl(episode)}`">Ep. {{ getIdFromUrl(episode) }} </NuxtLink>
+            </div>
             </div>
         </div>
         
@@ -49,13 +49,14 @@ interface Props {
 
 const props = defineProps<Props>();
 
-const heroStatus = computed(() => {
- return props.item.status   
-})
-
 const firstFiveEpisodes = computed(() => {
     return props.item.episode.slice(0, 5);
 });
+
+const getIdFromUrl = (url) => {
+        const urlParts = url.split("/");
+        return urlParts[urlParts.length - 1];
+}
 </script>
 
 <style scoped>
