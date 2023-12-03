@@ -1,5 +1,5 @@
 <template>
-    <div class="grid gap-4 grid-cols-2">
+    <div class="grid gap-4 grid-cols-1 lg:grid-cols-2">
       <div v-for="(item, id) in items" :key="id"  >
         <CharacterCard :item="item" />
       </div>

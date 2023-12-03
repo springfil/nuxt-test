@@ -1,9 +1,9 @@
 <template>
-    <div class="shadow-2xl bg-white flex gap-5 rounded-full">
+    <div class="shadow-2xl bg-white grid gap-1 grid-cols-2 sm:flex sm:gap-5 sm:rounded-full">
         <div >
             <img
                 :src="item.image"
-                class="w-full h-20 sm:h-32 md:h-48 object-cover rounded-full transform scale-100 transition duration-300 ease-in-out hover:scale-105"
+                class="w-40 sm:w-full my-5 sm:my-0  h-48 sm:h-40 md:h-48 object-cover sm:rounded-full transform scale-100 transition duration-300 ease-in-out hover:scale-105"
                 alt="avatar"
             />
         </div>
@@ -21,9 +21,9 @@
                     </li>
                 </ul>
             </div>
-            <div class="mt-8 flex flex-wrap">
+            <div class="mt-4 flex flex-wrap">
               <div 
-              class="transition duration-300 ease-in-out hover:scale-110 px-3 btn mx-2" 
+              class="transition duration-300 ease-in-out hover:scale-110 px-2 btn mx-1 my-1 w-16" 
               v-for="(episode, idx) in firstFiveEpisodes" :key="idx" 
               bgColor="bg-amber-500" textColor="text-slate-50">
                 <NuxtLink :to="`/episode/${getIdFromUrl(episode)}`">Ep. {{ getIdFromUrl(episode) }} </NuxtLink>

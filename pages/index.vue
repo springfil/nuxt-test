@@ -2,14 +2,14 @@
     <div>
         <div class="mb-4 flex justify-between gap-10">
             <input
-                class="w-2/5 text-lg bg-slate-50 px-5 py-2 rounded-xl shadow-lg outline-none"
+                class="w-1/2 sm:w-2/5 text-lg bg-slate-50 px-5 py-2 rounded-xl shadow-lg outline-none"
                 type="text"
                 v-model="characterName"
                 name="text"
                 placeholder="Input character's name "
             />
             <select
-            class="w-1/5 text-lg bg-slate-50 px-5 py-2,9 rounded-xl shadow-lg outline-none"
+            class="w-2/5 sm:w-1/5 text-lg bg-slate-50 px-5 py-2,9 rounded-xl shadow-lg outline-none"
             v-model="characterStatus">
                 <option disabled value="">select character's status</option>
                 <option v-for="status in characterStatuses" :key="status.value">{{ status.value }}</option>

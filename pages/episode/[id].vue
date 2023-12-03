@@ -10,7 +10,7 @@
             </li>
         </ul>
     </div>
-    <div class="grid gap-4 grid-cols-2 my-5 ">
+    <div class="grid gap-4 grid-cols-1 sm:grid-cols-2 my-5 ">
       <div v-for="(character, idx) in currentEpisodeCharacter" :key="idx">
         <div class="flex items-center shadow-2xl bg-white ">
           <NuxtLink :to="`/character/${getIdFromUrl(character.url)}`">
