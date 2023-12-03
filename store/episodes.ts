@@ -1,19 +1,21 @@
 import { useApi } from '~/composable/useApi';
 import { defineStore } from 'pinia';
+import type {Episode, SingleEpisodeResponse} from '~/types/episodes'
+import type { Character } from '~/types/character';
 
 export const useEpisodesStore = defineStore("episodes", () => {
     const api = useApi()
-    const currentEpisode = ref({})
-    const currentEpisodeCharacter = ref([])
+    const currentEpisode = ref({}) as Ref<Episode>
+    const currentEpisodeCharacter = ref<Array<Character>>([])
 
-    const getIdFromUrl = (url) => {
+    const getIdFromUrl = (url: string) => {
         const urlParts = url.split("/");
         return urlParts[urlParts.length - 1];
     }
 
-    async function getCurrentEpisode(episodeID) {
+    async function getCurrentEpisode(episodeID: number): Promise<void> {
         try {
-            const response = await api.get(`/episode/${episodeID}`);
+            const response: SingleEpisodeResponse = await api.get(`/episode/${episodeID}`);
             const episode = await response.data;
             const data = await episode;
             currentEpisode.value = data;
@@ -23,8 +25,8 @@ export const useEpisodesStore = defineStore("episodes", () => {
           }
     }
 
-    async function getEpisodeCharacterId() {
-        const charactersId = currentEpisode.value.characters.map((url) => {
+    async function getEpisodeCharacterId(): Promise<void> {
+        const charactersId = currentEpisode.value.characters.map((url: string) => {
           return getIdFromUrl(url);
         });
         const charactersData = await Promise.all(
@@ -33,7 +35,7 @@ export const useEpisodesStore = defineStore("episodes", () => {
         currentEpisodeCharacter.value = charactersData;
     }
 
-    async function getCharacterData(id) {
+    async function getCharacterData(id: string) {
         const response = await api.get(`/character/${id}`);
         const data = await response;
         return data.data;

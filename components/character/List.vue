@@ -7,11 +7,13 @@
 </template>
 
 <script setup lang="ts">
+import type { Character } from '~/types/character';
+
 interface Props {
-    items: Array<Object>;
+    items: Array<Character>;
 }
 
-const props = defineProps<Props>()
+defineProps<Props>()
 </script>
 
 <style scoped></style>

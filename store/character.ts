@@ -1,14 +1,15 @@
 import { useApi } from '~/composable/useApi';
 import { defineStore } from 'pinia';
+import type { Character, CharactersResponse, SingleCharacterResponse } from '~/types/character';
 
 export const useCharacterStore = defineStore("characters", () => {
     const api = useApi()
-    const characters = ref([])
-    const currentCharacter = ref({})
+    const characters = ref<Array<Character>>([])
+    const currentCharacter = ref<Character>() 
 
-    async function getCharacters(){
+    async function getCharacters(): Promise<void>{
         try {
-            const response = await api.get("/character");
+            const response: CharactersResponse = await api.get("/character");
             characters.value = response.data.results;
           } catch (error) {
             characters.value = [];
@@ -16,7 +17,7 @@ export const useCharacterStore = defineStore("characters", () => {
           }
     }
 
-    async function filterCharacters({ name , status }: {name: string, status: string}) {
+    async function filterCharacters({ name , status }: {name: string, status: string}): Promise<void> {
         try {
             const params = new URLSearchParams();
             if (name) {
@@ -26,7 +27,7 @@ export const useCharacterStore = defineStore("characters", () => {
                 params.append("status", status);
             }
         
-            const response = await api.get(`/character/?${params.toString()}`);
+            const response: CharactersResponse = await api.get(`/character/?${params.toString()}`);
             characters.value = response.data.results;
         } catch (error) {
             characters.value = [];
@@ -34,9 +35,9 @@ export const useCharacterStore = defineStore("characters", () => {
         }
     }
     
-    async function getCurrentCharacter(characterID: number) {
+    async function getCurrentCharacter(characterID: number): Promise<void> {
         try {
-            const response = await api.get(`/character/${characterID}`);
+            const response: SingleCharacterResponse = await api.get(`/character/${characterID}`);
             currentCharacter.value = response.data;
         } catch (error) {
             console.log(error);

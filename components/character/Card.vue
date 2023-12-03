@@ -35,16 +35,10 @@
 </template>
 
 <script setup lang="ts">
+import type { Character } from '~/types/character';
+
 interface Props {
-    item: {
-        name: string;
-        gender: string;
-        species: string;
-        image: string;
-        status: string;
-        episode: string;
-        id: number
-    };
+    item: Character
 }
 
 const props = defineProps<Props>();
@@ -53,7 +47,7 @@ const firstFiveEpisodes = computed(() => {
     return props.item.episode.slice(0, 5);
 });
 
-const getIdFromUrl = (url) => {
+const getIdFromUrl = (url: string) => {
         const urlParts = url.split("/");
         return urlParts[urlParts.length - 1];
 }
