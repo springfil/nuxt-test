@@ -14,14 +14,15 @@
 </template>
 
 <script setup lang="ts">
-import {useCharacterStore} from '@/store/character'
+import {useCharacterStore} from '~/store/character'
+import { useDebouncedRef } from '~/utils/debouncedRef.js'
 
 const characterStore = useCharacterStore();
 characterStore.$hydrate()
 const { characters } = storeToRefs(characterStore)
 characterStore.getCharacters()
 
-const characterName = ref('');
+const characterName = useDebouncedRef('', 1000);
 const characterStatus = ref('alive');
 
 const characterStatuses = ref([
@@ -29,15 +30,6 @@ const characterStatuses = ref([
     { value: 'dead' },
     { value: 'unknown' },
 ])
-
-
-
-watch([characterName, characterStatus], ([characterName, characterStatus]) => {
-    characterStore.filterCharacters({
-      name: characterName,
-      status: characterStatus
-    });
-});
 
 watch([characterName, characterStatus], ([characterName, characterStatus]) => {
     localStorage.setItem('characterName', characterName);
