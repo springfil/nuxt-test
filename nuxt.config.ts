@@ -14,5 +14,13 @@ export default defineNuxtConfig({
   },
   css:[
     '@/assets/css/global.css'
-  ]
+  ],
+  app: {
+    head: {
+      title: 'Rick & Morty',
+      meta: [
+        {name: 'description', content: 'cartoon about adventures'}
+      ],
+    }
+  },
 })

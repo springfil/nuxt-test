@@ -1,4 +1,8 @@
 <template>
+    <Head>
+      <Title>Episode {{ currentEpisode.episode }} - {{ currentEpisode.name }}</Title>
+      <Meta name="description" :content="currentEpisode.name" />
+    </Head>
     <div>
         <ul class="text-2xl my-15">
             <li>
