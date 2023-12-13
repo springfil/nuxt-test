@@ -22,20 +22,30 @@ export const useEpisodesStore = defineStore("episodes", () => {
     }
 
     async function getEpisodeCharacterId(): Promise<void> {
-        const charactersId = currentEpisode.value.characters.map((url: string) => {
-          return getIdFromUrl(url);
-        });
-        const charactersData = await Promise.all(
-            charactersId.map((id) => getCharacterData(id))
-        );
-        currentEpisodeCharacter.value = charactersData;
+        try {
+            const charactersId = currentEpisode.value.characters.map(
+                (url: string) => {
+                    return getIdFromUrl(url);
+                }
+            );
+            const charactersData = await Promise.all(
+                charactersId.map((id) => getCharacterData(id))
+            );
+            currentEpisodeCharacter.value = charactersData;
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     async function getCharacterData(id: string) {
-        const response = await api.get(`/character/${id}`);
-        const data = await response;
-        return data.data;
-      }
+        try {
+            const response = await api.get(`/character/${id}`);
+            const data = await response;
+            return data.data;
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     return {
         currentEpisode,
