@@ -27,18 +27,14 @@
 </template>
 
 <script setup lang="ts">
-import { useEpisodesStore } from "@/store/episodes";
+import { useEpisodesStore } from "~/store/episodes";
+import { getIdFromUrl } from '~/utils/getIdFromUrl';
 
 const route = useRoute();
 const episodesStore = useEpisodesStore();
 const { currentEpisode, currentEpisodeCharacter } = storeToRefs(episodesStore);
 
 episodesStore.getCurrentEpisode(route.params.id);
-
-const getIdFromUrl = (url: string) => {
-        const urlParts = url.split("/");
-        return urlParts[urlParts.length - 1];
-}
 </script>
 
 <style scoped></style>

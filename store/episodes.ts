@@ -1,5 +1,6 @@
 import { useApi } from '~/composable/useApi';
 import { defineStore } from 'pinia';
+import { getIdFromUrl } from '~/utils/getIdFromUrl';
 import type {Episode, SingleEpisodeResponse} from '~/types/episodes'
 import type { Character } from '~/types/character';
 
@@ -7,11 +8,6 @@ export const useEpisodesStore = defineStore("episodes", () => {
     const api = useApi()
     const currentEpisode = ref({}) as Ref<Episode>
     const currentEpisodeCharacter = ref<Array<Character>>([])
-
-    const getIdFromUrl = (url: string) => {
-        const urlParts = url.split("/");
-        return urlParts[urlParts.length - 1];
-    }
 
     async function getCurrentEpisode(episodeID: number): Promise<void> {
         try {

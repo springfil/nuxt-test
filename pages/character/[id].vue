@@ -14,7 +14,7 @@
 </template>
 
 <script setup>
-import { useCharacterStore } from "@/store/character";
+import { useCharacterStore } from "~/store/character";
 
 const characterStore = useCharacterStore();
 const { currentCharacter } = storeToRefs(characterStore);

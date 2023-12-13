@@ -22,7 +22,7 @@ characterStore.$hydrate()
 const { characters } = storeToRefs(characterStore)
 characterStore.getCharacters()
 
-const characterName = useDebouncedRef('', 1000);
+const characterName = useDebouncedRef('', 5000);
 const characterStatus = ref('alive');
 
 const characterStatuses = ref([

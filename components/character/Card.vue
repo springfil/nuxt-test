@@ -36,6 +36,7 @@
 
 <script setup lang="ts">
 import type { Character } from '~/types/character';
+import { getIdFromUrl } from '~/utils/getIdFromUrl';
 
 interface Props {
     item: Character
@@ -46,11 +47,6 @@ const props = defineProps<Props>();
 const firstFiveEpisodes = computed(() => {
     return props.item.episode.slice(0, 5);
 });
-
-const getIdFromUrl = (url: string) => {
-        const urlParts = url.split("/");
-        return urlParts[urlParts.length - 1];
-}
 </script>
 
 <style scoped>
